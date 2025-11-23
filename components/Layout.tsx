@@ -83,7 +83,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
         
         {/* Navigation */}
-        <nav className="flex-1 px-4 space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-zinc-800">
+        <nav className="flex-1 px-4 space-y-2 overflow-y-auto">
           <div className="mb-2 px-4 text-[10px] font-bold text-slate-400 dark:text-zinc-600 uppercase tracking-widest">Menu Principal</div>
           {navItems.map((item) => (
             <Link
@@ -197,7 +197,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         )}
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 md:p-8 pb-28 md:pb-8 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-zinc-700">
+        <main className="flex-1 p-4 md:p-8 pb-28 md:pb-8 overflow-y-auto overflow-x-hidden">
           <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
             {children}
           </div>
