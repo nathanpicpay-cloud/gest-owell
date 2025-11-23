@@ -63,3 +63,41 @@ export interface CalendarEvent {
   date: string; // ISO String
   description: string;
 }
+
+// --- Novos Tipos para o Kanban de Produção ---
+
+export enum ProductionStage {
+  WAITING_ART = 'Aguardando Arte',
+  ART_IN_PROGRESS = 'Em Criação',
+  CLIENT_APPROVAL = 'Aprovação Cliente',
+  PRINT_QUEUE = 'Fila de Impressão',
+  FINISHING = 'Acabamento/Corte',
+  READY = 'Pronto p/ Entrega'
+}
+
+export enum Priority {
+  LOW = 'Baixa',
+  NORMAL = 'Normal',
+  HIGH = 'Alta',
+  URGENT = 'Urgente'
+}
+
+export interface OrderNote {
+  id: string;
+  text: string;
+  createdAt: string;
+  author: string;
+}
+
+export interface ProductionOrder {
+  id: string;
+  quoteId: string;
+  clientName: string;
+  title: string; // Ex: "Fachada Loja X" ou "Cartões Fulano"
+  stage: ProductionStage;
+  priority: Priority;
+  deadline: string; // ISO String
+  description: string;
+  notes: OrderNote[];
+  items: string[]; // Resumo dos itens (ex: ["Lona 440g", "Adesivo"])
+}
