@@ -7,7 +7,6 @@ import {
   Package, 
   Video, 
   LogOut, 
-  Menu,
   UserCircle,
   Calendar
 } from 'lucide-react';
@@ -39,36 +38,41 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-slate-900 text-white sticky top-0 h-screen">
-        <div className="p-6 border-b border-slate-800">
-          <h1 className="text-xl font-bold">Gestão Wesley</h1>
-          <p className="text-xs text-slate-400 mt-1">Sistema Offline v1.0</p>
+    <div className="flex min-h-screen bg-gray-50 font-sans">
+      {/* Desktop Sidebar (Theme: White/Clean with Logo) */}
+      <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200 sticky top-0 h-screen z-10 shadow-sm">
+        <div className="p-8 flex justify-center items-center border-b border-gray-100 h-24">
+          <img 
+            src="https://i.imgur.com/gslPJZI.png" 
+            alt="Gestão Wesley Oliveira" 
+            className="h-14 w-auto object-contain transition-transform hover:scale-105" 
+          />
         </div>
-        <nav className="flex-1 p-4 space-y-1">
+        
+        <nav className="flex-1 p-4 space-y-2 mt-2">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-medium ${
                 isActive(item.path)
-                  ? 'bg-blue-600 text-white'
-                  : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                  ? 'bg-amber-500 text-white shadow-md shadow-amber-200'
+                  : 'text-gray-500 hover:bg-gray-50 hover:text-amber-600'
               }`}
             >
-              <item.icon size={20} />
+              <item.icon size={20} className={isActive(item.path) ? 'text-white' : ''} />
               <span>{item.label}</span>
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t border-slate-800">
+        
+        <div className="p-4 border-t border-gray-100">
           <button 
             onClick={handleLogout}
-            className="flex items-center gap-3 px-4 py-3 w-full text-left text-red-400 hover:bg-slate-800 rounded-lg transition-colors"
+            className="flex items-center gap-3 px-4 py-3 w-full text-left text-gray-500 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors text-sm font-medium"
           >
             <LogOut size={20} />
-            <span>Sair</span>
+            <span>Encerrar Sessão</span>
           </button>
         </div>
       </aside>
@@ -76,18 +80,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Mobile Header & Content */}
       <div className="flex-1 flex flex-col min-w-0">
         <header className="md:hidden bg-white border-b px-4 py-3 flex items-center justify-between sticky top-0 z-20 shadow-sm">
-          <h1 className="font-bold text-slate-800">Gestão Wesley</h1>
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-slate-600">
+          <img 
+            src="https://i.imgur.com/gslPJZI.png" 
+            alt="Logo" 
+            className="h-8 w-auto object-contain" 
+          />
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-600">
             <UserCircle size={28} />
           </button>
         </header>
 
         {/* Mobile Menu Overlay (Logout) */}
         {isMobileMenuOpen && (
-            <div className="md:hidden absolute top-14 right-4 bg-white shadow-lg border rounded-lg p-2 z-30 w-48">
+            <div className="md:hidden absolute top-14 right-4 bg-white shadow-xl border border-gray-100 rounded-xl p-2 z-30 w-48 animate-in fade-in slide-in-from-top-2">
                 <button 
                     onClick={handleLogout}
-                    className="flex items-center gap-2 w-full px-4 py-2 text-red-600 hover:bg-red-50"
+                    className="flex items-center gap-2 w-full px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg text-sm font-medium"
                 >
                     <LogOut size={16} />
                     Sair do Sistema
@@ -100,16 +108,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </main>
 
         {/* Mobile Bottom Nav */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center z-20 pb-safe">
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex justify-around items-center z-20 pb-safe safe-area-bottom">
           {navItems.slice(0, 5).map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`flex flex-col items-center gap-1 p-3 flex-1 ${
-                isActive(item.path) ? 'text-blue-600' : 'text-slate-400'
+              className={`flex flex-col items-center gap-1 p-3 flex-1 transition-colors ${
+                isActive(item.path) ? 'text-amber-500' : 'text-gray-400'
               }`}
             >
-              <item.icon size={24} />
+              <item.icon size={24} strokeWidth={isActive(item.path) ? 2.5 : 2} />
               <span className="text-[10px] font-medium">{item.label}</span>
             </Link>
           ))}
