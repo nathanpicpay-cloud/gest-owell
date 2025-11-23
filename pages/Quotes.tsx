@@ -286,9 +286,13 @@ const Quotes: React.FC = () => {
         {/* Printable Area */}
         <div ref={printRef} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 print:shadow-none print:border-none">
           <div className="flex justify-between items-start mb-8 border-b pb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-slate-800">Gestão Wesley</h1>
-              <p className="text-gray-500">Comunicação Visual</p>
+            <div className="flex flex-col">
+              <img 
+                src="https://i.imgur.com/gslPJZI.png" 
+                alt="Gestão Wesley Oliveira" 
+                className="h-20 w-auto object-contain mb-4 self-start" 
+              />
+              <p className="text-gray-500 font-medium">Comunicação Visual</p>
               <p className="text-sm text-gray-400 mt-2">Rua Exemplo, 123 - Centro</p>
               <p className="text-sm text-gray-400">contato@exemplo.com | (11) 99999-9999</p>
             </div>
