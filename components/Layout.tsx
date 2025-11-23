@@ -76,7 +76,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <img 
               src="https://i.imgur.com/gslPJZI.png" 
               alt="Gestão Wesley Oliveira" 
-              className="relative h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm dark:brightness-110" 
+              className="relative h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm dark:brightness-0 dark:invert" 
             />
           </div>
           <p className="mt-4 text-xs font-bold tracking-[0.2em] text-slate-400 dark:text-zinc-500 uppercase">Gestão Premium</p>
@@ -145,7 +145,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <img 
             src="https://i.imgur.com/gslPJZI.png" 
             alt="Logo" 
-            className="h-9 w-auto object-contain dark:brightness-110" 
+            className="h-9 w-auto object-contain dark:brightness-0 dark:invert" 
           />
           <div className="flex items-center gap-2">
             <button 
